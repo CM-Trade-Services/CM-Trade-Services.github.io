@@ -9,19 +9,21 @@ body {
 header {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   background-color: #b7c2b1;
   padding: 10px 20px;
 }
 
+nav {
+  display: flex;
+  gap: 15px;
+  flex-shrink: 0;
+}
+
 nav a {
-  margin-right: 15px;
   text-decoration: none;
   color: #333;
   font-weight: 600;
-}
-
-nav a:last-child {
-  margin-right: 0;
 }
 
 nav a:hover {
@@ -29,10 +31,13 @@ nav a:hover {
 }
 
 header h1 {
-  flex: 1;
-  text-align: center;
+  flex: 1 1 auto;
   margin: 0;
-  font-size: 1.5rem;
+  font-size: clamp(1rem, 4vw, 1.5rem);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
 }
 
 main {
