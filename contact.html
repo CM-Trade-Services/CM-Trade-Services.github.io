@@ -20,10 +20,40 @@
   </header>
   <main>
     <form action="https://formsubmit.co/cmann1970%40gmail.com" method="POST">
+      <label for="name">Your name (optional):</label>
+      <input id="name" name="name" type="text">
+
       <label for="message">Type your enquiry:</label>
-      <textarea id="message" name="message"></textarea>
-      <button type="submit">Send Enquiry</button>
+      <textarea id="message" name="message" required></textarea>
+
+      <label for="contactDetails">How can we contact you?</label>
+      <div class="contact-detail-group">
+        <select id="contactType" name="contactType">
+          <option value="phone">Phone</option>
+          <option value="email">Email</option>
+        </select>
+        <input id="contactDetails" name="contactDetails" type="text" required>
+      </div>
+
+      <button id="submitBtn" type="submit" disabled>Send Enquiry</button>
     </form>
+    <script>
+      const message = document.getElementById('message');
+      const contactDetails = document.getElementById('contactDetails');
+      const submitBtn = document.getElementById('submitBtn');
+
+      function toggleButton() {
+        if (message.value.trim() && contactDetails.value.trim()) {
+          submitBtn.disabled = false;
+        } else {
+          submitBtn.disabled = true;
+        }
+      }
+
+      message.addEventListener('input', toggleButton);
+      contactDetails.addEventListener('input', toggleButton);
+      toggleButton();
+    </script>
   </main>
 </body>
 </html>
